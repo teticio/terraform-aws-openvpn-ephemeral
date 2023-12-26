@@ -42,7 +42,7 @@ resource "aws_instance" "openvpn_ephemeral_ec2" {
 resource "null_resource" "obtain_ovpn_file" {
   depends_on = [aws_instance.openvpn_ephemeral_ec2]
   provisioner "local-exec" {
-    command = "export AWS_DEFAULT_REGION=${var.region}; until ls openvpn.ovpn; do aws s3 cp s3://${aws_s3_bucket.openvpn_config_bucket.bucket}/openvpn.ovpn . ; sleep 5; done;"
+    command = "rm -f openvpn.ovpn; export AWS_DEFAULT_REGION=${var.region}; until ls openvpn.ovpn; do aws s3 cp s3://${aws_s3_bucket.openvpn_config_bucket.bucket}/openvpn.ovpn . ; sleep 5; done;"
   }
 
 }

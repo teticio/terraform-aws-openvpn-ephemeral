@@ -7,3 +7,8 @@ output "bucket_name" {
   description = "bucket name created by Terraform"
   value       = aws_s3_bucket.openvpn_config_bucket.bucket
 }
+
+output "region" {
+  description = "region"
+  value       = var.region
+}

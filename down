@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+terraform destroy --auto-approve --var region=$(terraform output region | tr -d '"') --var public_ip=$(curl -s https://ipinfo.io/ip)
+rm -f openvpn.ovpn

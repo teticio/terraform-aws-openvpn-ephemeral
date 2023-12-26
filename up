@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <region> [public_ip]"
+    exit 1
+fi
+region=$1
+if [ $# -eq 2 ]; then
+    public_ip=$2
+else
+    public_ip=$(curl -s https://ipinfo.io/ip)
+fi
+terraform apply --auto-approve --var region=$region --var public_ip=$public_ip

@@ -2,3 +2,4 @@
 .terraform.tf*
 terraform.tfst*
 .DS_Store
+.terraform.lock.hcl
